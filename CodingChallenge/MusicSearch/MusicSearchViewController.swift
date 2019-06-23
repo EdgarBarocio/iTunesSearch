@@ -91,6 +91,7 @@ class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic, UITe
     func performSearch() {
         let request = MusicSearch.Search.Request(searchTerm: searchTextField?.text ?? "")
         searchStatusLabel?.text = SearchDisplayResults.loadingMessage.rawValue
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         interactor?.performSearch(request: request)
     }
     

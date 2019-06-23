@@ -20,10 +20,10 @@ enum MusicSearch {
             var searchTerm: String
         }
         struct Response {
-            var searchResult: SongsResponse?
+            var searchResult: [SongResponse]?
         }
         struct ViewModel {
-            var searchResult: SongsResponse?
+            var searchResult: [SongResponse]?
         }
     }
 }

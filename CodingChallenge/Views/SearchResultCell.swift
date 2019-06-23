@@ -16,13 +16,20 @@ class SearchResultCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         update(with: nil, title: nil, artist: nil)
     }
     
-    func update(with image: UIImage?, title: String?, artist: String?) {
-        albumArt.image = image
+    func update(with imageURL: String?, title: String?, artist: String?) {
+        
+        let url = URL(string: imageURL ?? "")
+        
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!)
+            DispatchQueue.main.async {
+                self.albumArt.image = UIImage(data: data!)
+            }
+        }
         titleLabel.text = title
         artistLabel.text = artist
     }
