@@ -20,16 +20,20 @@ private enum SearchDisplayResults: String {
     case noResults = "No Results Found"
 }
 
+private enum SegueList: String {
+    case ShowSongSegue = "ShowSong"
+}
+
 protocol MusicSearchDisplayLogic: class {
     func displayResults(viewModel: MusicSearch.Search.ViewModel)
 }
 
 class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic, UITextFieldDelegate, UICollectionViewDelegate {
     
-    @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var searchStatusLabel: UILabel!
-    @IBOutlet weak var resultsCollection: UICollectionView!
+    @IBOutlet var searchTextField: UITextField!
+    @IBOutlet var cancelButton: UIButton!
+    @IBOutlet var searchStatusLabel: UILabel!
+    @IBOutlet var resultsCollection: UICollectionView!
     
     let resultsDataSource = SearchDataSource()
     
@@ -82,7 +86,7 @@ class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic, UITe
         
         resultsCollection?.dataSource = resultsDataSource
         resultsCollection?.delegate = self
-        resultsCollection?.register(UINib.init(nibName: "SearchResultCell", bundle: nil), forCellWithReuseIdentifier: "SearchResultCell")
+        resultsCollection?.register(UINib.init(nibName: "SearchResultCell", bundle: nil), forCellWithReuseIdentifier: SearchResultCell.identifier)
         resultsCollection?.isHidden = true
         cancelButton?.isEnabled = false
         searchStatusLabel?.text = SearchDisplayResults.firstMessage.rawValue
@@ -90,10 +94,14 @@ class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic, UITe
     
     // MARK: Search Function
     func performSearch() {
-        let request = MusicSearch.Search.Request(searchTerm: searchTextField?.text ?? "")
-        searchStatusLabel?.text = SearchDisplayResults.loadingMessage.rawValue
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        interactor?.performSearch(request: request)
+        if let searchText = searchTextField.text?.trimmingCharacters(in: .whitespaces),
+            !searchText.isEmpty {
+            let request = MusicSearch.Search.Request(searchTerm: searchTextField?.text ?? "")
+            searchStatusLabel?.text = SearchDisplayResults.loadingMessage.rawValue
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            interactor?.performSearch(request: request)
+        }
+        
     }
     
     func displayResults(viewModel: MusicSearch.Search.ViewModel) {
@@ -126,7 +134,7 @@ class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic, UITe
     // MARK: Collection View Delegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //Navigate to detail
-        performSegue(withIdentifier: "ShowSong", sender: resultsDataSource.results[indexPath.row])
+        performSegue(withIdentifier: SegueList.ShowSongSegue.rawValue, sender: resultsDataSource.results[indexPath.row])
     }
     
     // MARK: Button Acton

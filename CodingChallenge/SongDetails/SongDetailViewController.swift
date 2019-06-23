@@ -13,24 +13,14 @@
 import UIKit
 
 class SongDetailViewController: UIViewController {
-    @IBOutlet weak var albumArt: UIImageView!
-    @IBOutlet weak var trackName: UILabel!
-    @IBOutlet weak var trackArtist: UILabel!
+    @IBOutlet var albumArt: UIImageView!
+    @IBOutlet var trackName: UILabel!
+    @IBOutlet var trackArtist: UILabel!
     
     var albumURL = ""
     var track = ""
     var artist = ""
-    
-    // MARK: Object lifecycle
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
+
     // MARK: View lifecycle
     
     override func viewDidLoad() {

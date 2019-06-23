@@ -10,26 +10,24 @@ import UIKit
 
 class SearchResultCell: UICollectionViewCell {
 
-    @IBOutlet weak var albumArt: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var artistLabel: UILabel!
+    static let identifier = "SearchResultCell"
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        //update(with: nil, title: nil, artist: nil)
-    }
+    @IBOutlet var albumArt: UIImageView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var artistLabel: UILabel!
     
     func update(with imageURL: String?, title: String?, artist: String?) {
         
-        let url = URL(string: imageURL ?? "")
-        
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: url!)
-            DispatchQueue.main.async {
-                self.albumArt.image = UIImage(data: data!)
+        if let url = URL(string: imageURL ?? "") {
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: url) {
+                    DispatchQueue.main.async {
+                        self.albumArt.image = UIImage(data: data)
+                    }
+                }
             }
         }
+        
         titleLabel.text = title
         artistLabel.text = artist
     }

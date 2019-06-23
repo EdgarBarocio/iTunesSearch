@@ -13,7 +13,6 @@
 import UIKit
 
 protocol MusicSearchBusinessLogic {
-    
     func performSearch(request: MusicSearch.Search.Request)
 }
 
