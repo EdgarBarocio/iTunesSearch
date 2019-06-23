@@ -31,6 +31,7 @@
 		8E98700B22BF6E660099B37C /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98700922BF6E660099B37C /* SearchResultCell.swift */; };
 		8E98700C22BF6E660099B37C /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E98700A22BF6E660099B37C /* SearchResultCell.xib */; };
 		8E98700E22BF75000099B37C /* SearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98700D22BF75000099B37C /* SearchDataSource.swift */; };
+		8E98701022BFBCA70099B37C /* CustomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98700F22BFBCA70099B37C /* CustomLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		8E98700922BF6E660099B37C /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		8E98700A22BF6E660099B37C /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		8E98700D22BF75000099B37C /* SearchDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataSource.swift; sourceTree = "<group>"; };
+		8E98700F22BFBCA70099B37C /* CustomLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			children = (
 				8E98700922BF6E660099B37C /* SearchResultCell.swift */,
 				8E98700A22BF6E660099B37C /* SearchResultCell.xib */,
+				8E98700F22BFBCA70099B37C /* CustomLayout.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				8E986FF622BF37BF0099B37C /* SongDetailInteractor.swift in Sources */,
 				8E98700B22BF6E660099B37C /* SearchResultCell.swift in Sources */,
 				8E986FF822BF37BF0099B37C /* SongDetailWorker.swift in Sources */,
+				8E98701022BFBCA70099B37C /* CustomLayout.swift in Sources */,
 				8E986FDE22BF09E10099B37C /* MusicSearchWorker.swift in Sources */,
 				8E986FF422BF37BF0099B37C /* SongDetailViewController.swift in Sources */,
 				8E986FDB22BF09E10099B37C /* MusicSearchViewController.swift in Sources */,
