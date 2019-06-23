@@ -96,7 +96,17 @@ class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic, UITe
     }
     
     func displayResults(viewModel: MusicSearch.Search.ViewModel) {
-        //nameTextField.text = viewModel.name
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        
+        guard let result = viewModel.searchResult else {
+            searchStatusLabel?.text = SearchDisplayResults.noResults.rawValue
+            return
+        }
+        
+        searchStatusLabel?.isHidden = true
+        resultsCollection?.isHidden = false
+        resultsDataSource.results = result
+        resultsCollection?.reloadData()
     }
     
     // MARK: Text Delegate Functions
@@ -104,6 +114,7 @@ class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic, UITe
         cancelButton?.isEnabled = true
     }
     
+    // MARK: Protocol implementation
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         performSearch()
@@ -111,6 +122,12 @@ class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic, UITe
         return true
     }
     
+    // MARK: Collection View Delegate
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //Navigate to detail
+    }
+    
+    // MARK: Button Acton
     @IBAction func cancelPressed(_ sender: Any) {
         searchTextField?.resignFirstResponder()
     }

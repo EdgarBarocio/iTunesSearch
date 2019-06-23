@@ -17,7 +17,7 @@ class SearchResultCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        update(with: nil, title: nil, artist: nil)
+        //update(with: nil, title: nil, artist: nil)
     }
     
     func update(with imageURL: String?, title: String?, artist: String?) {

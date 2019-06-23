@@ -18,23 +18,22 @@ protocol MusicSearchBusinessLogic {
 }
 
 protocol MusicSearchDataStore {
-    //var name: String { get set }
+    var songs: [SongResponse]? { get }
 }
 
 class MusicSearchInteractor: MusicSearchBusinessLogic, MusicSearchDataStore {
     var presenter: MusicSearchPresentationLogic?
-    var worker: MusicSearchWorker?
+    var searchWorker: MusicSearchWorker?
+    var songs: [SongResponse]?
     
-    // MARK: Do something
+    // MARK: Fetch songs
     
     func performSearch(request: MusicSearch.Search.Request) {
-        worker = MusicSearchWorker()
-        worker?.doSomeWork()
-        
-        let response = MusicSearch.Search.Response()
-        presenter?.presentSomething(response: response)
+        searchWorker = MusicSearchWorker()
+        searchWorker?.performSearch(searchTerm: request.searchTerm) { (songs) -> Void in
+            self.songs = songs
+            let response = MusicSearch.Search.Response(searchResult: songs)
+            self.presenter?.presentSongs(response: response)
+        }
     }
-    
-    
-    
 }

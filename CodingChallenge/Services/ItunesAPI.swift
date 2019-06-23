@@ -8,14 +8,6 @@
 
 import Foundation
 
-enum ItunesError: Error {
-    case invalidJSONData
-}
-
-enum EndPoint: String {
-    case itunesSearch = "https://itunes.apple.com/search"
-}
-
 class QueryService {
     
     typealias JSONDictionary = [String: Any]

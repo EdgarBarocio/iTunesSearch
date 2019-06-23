@@ -20,6 +20,8 @@ class SearchDataSource: NSObject, UICollectionViewDataSource {
         let identifier = "SearchResultCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! SearchResultCell
         
+        let displayInfo = results[indexPath.row]
+        cell.update(with: displayInfo.artworkUrl100, title: displayInfo.trackName, artist: displayInfo.artistName)
         return cell
     }
 }

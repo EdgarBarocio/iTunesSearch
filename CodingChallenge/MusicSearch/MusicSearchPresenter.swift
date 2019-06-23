@@ -13,7 +13,7 @@
 import UIKit
 
 protocol MusicSearchPresentationLogic {
-    func presentSomething(response: MusicSearch.Search.Response)
+    func presentSongs(response: MusicSearch.Search.Response)
 }
 
 class MusicSearchPresenter: MusicSearchPresentationLogic {
@@ -21,8 +21,8 @@ class MusicSearchPresenter: MusicSearchPresentationLogic {
     
     // MARK: Do something
     
-    func presentSomething(response: MusicSearch.Search.Response) {
-        let viewModel = MusicSearch.Search.ViewModel()
+    func presentSongs(response: MusicSearch.Search.Response) {
+        let viewModel = MusicSearch.Search.ViewModel(searchResult: response.searchResult)
         viewController?.displayResults(viewModel: viewModel)
     }
 }

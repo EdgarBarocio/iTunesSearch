@@ -13,6 +13,26 @@
 import UIKit
 
 class MusicSearchWorker {
-    func doSomeWork() {
+    
+    var songResults:[SongResponse] = []
+    let queryService = QueryService()
+    
+    func performSearch(searchTerm:String, completionHandler: @escaping ([SongResponse]) -> Void) {
+        queryService.getSearchResults(searchTerm: searchTerm) { results , errorMessage in
+            if let results = results {
+                self.songResults = results
+                DispatchQueue.main.async {
+                    completionHandler(self.songResults)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    completionHandler([])
+                }
+            }
+            
+            if !errorMessage.isEmpty {
+                print("Search error: " + errorMessage)
+            }
+        }
     }
 }
