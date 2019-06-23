@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8E986FA922BEF4CE0099B37C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E986FA822BEF4CE0099B37C /* AppDelegate.swift */; };
-		8E986FAB22BEF4CE0099B37C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E986FAA22BEF4CE0099B37C /* ViewController.swift */; };
 		8E986FAE22BEF4CE0099B37C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E986FAC22BEF4CE0099B37C /* Main.storyboard */; };
 		8E986FB022BEF4CF0099B37C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E986FAF22BEF4CF0099B37C /* Assets.xcassets */; };
 		8E986FB322BEF4CF0099B37C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E986FB122BEF4CF0099B37C /* LaunchScreen.storyboard */; };
@@ -41,7 +40,6 @@
 /* Begin PBXFileReference section */
 		8E986FA522BEF4CE0099B37C /* CodingChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E986FA822BEF4CE0099B37C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8E986FAA22BEF4CE0099B37C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8E986FAD22BEF4CE0099B37C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E986FAF22BEF4CF0099B37C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E986FB222BEF4CF0099B37C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 				8E986FED22BF37BF0099B37C /* SongDetails */,
 				8E986FD422BF09E10099B37C /* MusicSearch */,
 				8E986FA822BEF4CE0099B37C /* AppDelegate.swift */,
-				8E986FAA22BEF4CE0099B37C /* ViewController.swift */,
 				8E986FAC22BEF4CE0099B37C /* Main.storyboard */,
 				8E986FAF22BEF4CF0099B37C /* Assets.xcassets */,
 				8E986FB122BEF4CF0099B37C /* LaunchScreen.storyboard */,
@@ -259,7 +256,6 @@
 				8E986FF622BF37BF0099B37C /* SongDetailInteractor.swift in Sources */,
 				8E986FF822BF37BF0099B37C /* SongDetailWorker.swift in Sources */,
 				8E986FDE22BF09E10099B37C /* MusicSearchWorker.swift in Sources */,
-				8E986FAB22BEF4CE0099B37C /* ViewController.swift in Sources */,
 				8E986FF422BF37BF0099B37C /* SongDetailViewController.swift in Sources */,
 				8E986FDB22BF09E10099B37C /* MusicSearchViewController.swift in Sources */,
 				8E986FE022BF09E10099B37C /* MusicSearchPresenter.swift in Sources */,

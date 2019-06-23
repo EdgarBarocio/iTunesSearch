@@ -78,3 +78,7 @@ class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic {
     //nameTextField.text = viewModel.name
   }
 }
+
+
+// MARK: Text Displayed on Search
+
