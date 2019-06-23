@@ -66,11 +66,12 @@ class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic, UITe
     // MARK: Routing
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
+        if segue.identifier == "ShowSong" {
+            let data = sender as? SongResponse
+            let vc = segue.destination as! SongDetailViewController
+            vc.albumURL = data?.artworkUrl100 ?? ""
+            vc.artist = data?.artistName ?? ""
+            vc.track = data?.trackName ?? ""
         }
     }
     
@@ -125,6 +126,7 @@ class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic, UITe
     // MARK: Collection View Delegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //Navigate to detail
+        performSegue(withIdentifier: "ShowSong", sender: resultsDataSource.results[indexPath.row])
     }
     
     // MARK: Button Acton
