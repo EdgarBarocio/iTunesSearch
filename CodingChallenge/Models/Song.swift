@@ -8,23 +8,15 @@
 
 import Foundation
 
-public struct SongsResponse: Decodable {
-    let resultCount: UInt
-    let results: [SongResponse]
-}
-
-public struct SongResponse: Decodable {
+class SongResponse {
     
     let artistName: String
-    let trackId: Int
     let trackName: String
-    let trackViewUrl: String
-    let previewUrl: String?
     let artworkUrl100: String
-    let releaseDate: String
-    let primaryGenreName: String
-    let trackPrice: Float?
-    let currency: String
-    let trackTimeMillis: Int?
-    let collectionName: String?
+    
+    init(name: String, artist: String, artworkUrl100: String) {
+        self.trackName = name
+        self.artistName = artist
+        self.artworkUrl100 = artworkUrl100
+    }
 }
