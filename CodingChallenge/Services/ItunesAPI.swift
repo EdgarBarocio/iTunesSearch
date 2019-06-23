@@ -14,6 +14,7 @@ enum ItunesError: Error {
 
 enum EndPoint: String {
     case itunesSearch = "https://itunes.apple.com/search?term="
+    case itunesLimit = "limit=50" //Decided to only show 50 results for simplicity
 }
 
 struct ItunesAPI {

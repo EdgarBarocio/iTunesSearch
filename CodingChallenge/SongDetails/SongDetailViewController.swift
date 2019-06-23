@@ -17,6 +17,9 @@ protocol SongDetailDisplayLogic: class {
 }
 
 class SongDetailViewController: UIViewController, SongDetailDisplayLogic {
+    @IBOutlet weak var albumArt: UIImageView!
+    @IBOutlet weak var trackName: UILabel!
+    @IBOutlet weak var trackArtist: UILabel!
     var interactor: SongDetailBusinessLogic?
     var router: (NSObjectProtocol & SongDetailRoutingLogic & SongDetailDataPassing)?
     

@@ -23,6 +23,6 @@ class MusicSearchPresenter: MusicSearchPresentationLogic {
     
     func presentSomething(response: MusicSearch.Search.Response) {
         let viewModel = MusicSearch.Search.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+        viewController?.displayResults(viewModel: viewModel)
     }
 }

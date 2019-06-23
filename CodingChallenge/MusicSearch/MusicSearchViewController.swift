@@ -21,15 +21,17 @@ private enum SearchDisplayResults: String {
 }
 
 protocol MusicSearchDisplayLogic: class {
-    func displaySomething(viewModel: MusicSearch.Search.ViewModel)
+    func displayResults(viewModel: MusicSearch.Search.ViewModel)
 }
 
-class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic, UITextFieldDelegate {
+class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic, UITextFieldDelegate, UICollectionViewDelegate {
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var searchStatusLabel: UILabel!
     @IBOutlet weak var resultsCollection: UICollectionView!
+    
+    let resultsDataSource = SearchDataSource()
     
     var interactor: MusicSearchBusinessLogic?
     var router: (NSObjectProtocol & MusicSearchRoutingLogic & MusicSearchDataPassing)?
@@ -77,19 +79,22 @@ class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic, UITe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        resultsCollection?.dataSource = resultsDataSource
+        resultsCollection?.delegate = self
+        resultsCollection?.register(UINib.init(nibName: "SearchResultCell", bundle: nil), forCellWithReuseIdentifier: "SearchResultCell")
+        resultsCollection?.isHidden = true
         cancelButton?.isEnabled = false
         searchStatusLabel?.text = SearchDisplayResults.firstMessage.rawValue
-        
-        doSomething()
     }
     
-    // MARK: Do something
-    func doSomething() {
-        let request = MusicSearch.Search.Request()
+    // MARK: Search Function
+    func performSearch() {
+        let request = MusicSearch.Search.Request(searchTerm: searchTextField?.text ?? "")
+        searchStatusLabel?.text = SearchDisplayResults.loadingMessage.rawValue
         interactor?.performSearch(request: request)
     }
     
-    func displaySomething(viewModel: MusicSearch.Search.ViewModel) {
+    func displayResults(viewModel: MusicSearch.Search.ViewModel) {
         //nameTextField.text = viewModel.name
     }
     
@@ -100,6 +105,7 @@ class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic, UITe
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        performSearch()
         
         return true
     }
