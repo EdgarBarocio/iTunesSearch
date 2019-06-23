@@ -27,6 +27,7 @@
 		8E986FFB22BF39A10099B37C /* SampleSong.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E986FFA22BF39A10099B37C /* SampleSong.json */; };
 		8E986FFE22BF4A310099B37C /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E986FFD22BF4A310099B37C /* Song.swift */; };
 		8E98700122BF4E0D0099B37C /* ItunesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98700022BF4E0D0099B37C /* ItunesAPI.swift */; };
+		8E98700322BF56100099B37C /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98700222BF56100099B37C /* ImageStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		8E986FFA22BF39A10099B37C /* SampleSong.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SampleSong.json; sourceTree = "<group>"; };
 		8E986FFD22BF4A310099B37C /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		8E98700022BF4E0D0099B37C /* ItunesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItunesAPI.swift; sourceTree = "<group>"; };
+		8E98700222BF56100099B37C /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				8E986FED22BF37BF0099B37C /* SongDetails */,
 				8E986FD422BF09E10099B37C /* MusicSearch */,
 				8E986FA822BEF4CE0099B37C /* AppDelegate.swift */,
+				8E98700222BF56100099B37C /* ImageStore.swift */,
 				8E986FAC22BEF4CE0099B37C /* Main.storyboard */,
 				8E986FAF22BEF4CF0099B37C /* Assets.xcassets */,
 				8E986FB122BEF4CF0099B37C /* LaunchScreen.storyboard */,
@@ -283,6 +286,7 @@
 				8E986FF422BF37BF0099B37C /* SongDetailViewController.swift in Sources */,
 				8E986FDB22BF09E10099B37C /* MusicSearchViewController.swift in Sources */,
 				8E986FE022BF09E10099B37C /* MusicSearchPresenter.swift in Sources */,
+				8E98700322BF56100099B37C /* ImageStore.swift in Sources */,
 				8E986FDD22BF09E10099B37C /* MusicSearchRouter.swift in Sources */,
 				8E986FA922BEF4CE0099B37C /* AppDelegate.swift in Sources */,
 				8E986FDF22BF09E10099B37C /* MusicSearchModels.swift in Sources */,
