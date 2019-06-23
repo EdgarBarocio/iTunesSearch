@@ -12,73 +12,99 @@
 
 import UIKit
 
+
+// Enum to display seach status
+private enum SearchDisplayResults: String {
+    case firstMessage = "Enter Search Term"
+    case loadingMessage = "Searching"
+    case noResults = "No Results Found"
+}
+
 protocol MusicSearchDisplayLogic: class {
-  func displaySomething(viewModel: MusicSearch.Something.ViewModel)
+    func displaySomething(viewModel: MusicSearch.Something.ViewModel)
 }
 
-class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic {
-  var interactor: MusicSearchBusinessLogic?
-  var router: (NSObjectProtocol & MusicSearchRoutingLogic & MusicSearchDataPassing)?
-
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup() {
-    let viewController = self
-    let interactor = MusicSearchInteractor()
-    let presenter = MusicSearchPresenter()
-    let router = MusicSearchRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic, UITextFieldDelegate {
+    
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var searchStatusLabel: UILabel!
+    @IBOutlet weak var resultsCollection: UICollectionView!
+    
+    var interactor: MusicSearchBusinessLogic?
+    var router: (NSObjectProtocol & MusicSearchRoutingLogic & MusicSearchDataPassing)?
+    
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
     }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    doSomething()
-  }
-  
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething() {
-    let request = MusicSearch.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: MusicSearch.Something.ViewModel) {
-    //nameTextField.text = viewModel.name
-  }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    // MARK: Setup
+    
+    private func setup() {
+        let viewController = self
+        let interactor = MusicSearchInteractor()
+        let presenter = MusicSearchPresenter()
+        let router = MusicSearchRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+    
+    // MARK: Routing
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
+            }
+        }
+    }
+    
+    // MARK: View lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        cancelButton?.isEnabled = false
+        searchStatusLabel?.text = SearchDisplayResults.firstMessage.rawValue
+        
+        doSomething()
+    }
+    
+    // MARK: Do something
+    func doSomething() {
+        let request = MusicSearch.Something.Request()
+        interactor?.doSomething(request: request)
+    }
+    
+    func displaySomething(viewModel: MusicSearch.Something.ViewModel) {
+        //nameTextField.text = viewModel.name
+    }
+    
+    // MARK: Text Delegate Functions
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        cancelButton?.isEnabled = true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    @IBAction func cancelPressed(_ sender: Any) {
+        searchTextField?.resignFirstResponder()
+    }
 }
-
-
-// MARK: Text Displayed on Search
-
