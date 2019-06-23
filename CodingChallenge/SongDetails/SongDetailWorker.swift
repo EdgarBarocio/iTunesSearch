@@ -13,6 +13,6 @@
 import UIKit
 
 class SongDetailWorker {
-  func doSomeWork() {
-  }
+    func doSomeWork() {
+    }
 }

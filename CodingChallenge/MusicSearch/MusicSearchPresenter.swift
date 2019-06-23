@@ -13,16 +13,16 @@
 import UIKit
 
 protocol MusicSearchPresentationLogic {
-  func presentSomething(response: MusicSearch.Something.Response)
+    func presentSomething(response: MusicSearch.Search.Response)
 }
 
 class MusicSearchPresenter: MusicSearchPresentationLogic {
-  weak var viewController: MusicSearchDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: MusicSearch.Something.Response) {
-    let viewModel = MusicSearch.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    weak var viewController: MusicSearchDisplayLogic?
+    
+    // MARK: Do something
+    
+    func presentSomething(response: MusicSearch.Search.Response) {
+        let viewModel = MusicSearch.Search.ViewModel()
+        viewController?.displaySomething(viewModel: viewModel)
+    }
 }

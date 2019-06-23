@@ -21,7 +21,7 @@ private enum SearchDisplayResults: String {
 }
 
 protocol MusicSearchDisplayLogic: class {
-    func displaySomething(viewModel: MusicSearch.Something.ViewModel)
+    func displaySomething(viewModel: MusicSearch.Search.ViewModel)
 }
 
 class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic, UITextFieldDelegate {
@@ -85,11 +85,11 @@ class MusicSearchViewController: UIViewController, MusicSearchDisplayLogic, UITe
     
     // MARK: Do something
     func doSomething() {
-        let request = MusicSearch.Something.Request()
-        interactor?.doSomething(request: request)
+        let request = MusicSearch.Search.Request()
+        interactor?.performSearch(request: request)
     }
     
-    func displaySomething(viewModel: MusicSearch.Something.ViewModel) {
+    func displaySomething(viewModel: MusicSearch.Search.ViewModel) {
         //nameTextField.text = viewModel.name
     }
     

@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+enum ItunesError: Error {
+    case invalidJSONData
+}
+
+enum EndPoint: String {
+    case itunesSearch = "https://itunes.apple.com/search?term="
+}
+
+struct ItunesAPI {
+    
+    private static func searchURL() -> URL {
+        
+        return URL(string: "")!
+    }
+}

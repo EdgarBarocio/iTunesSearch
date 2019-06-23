@@ -13,25 +13,25 @@
 import UIKit
 
 protocol SongDetailBusinessLogic {
-  func doSomething(request: SongDetail.Something.Request)
+    func doSomething(request: SongDetail.Something.Request)
 }
 
 protocol SongDetailDataStore {
-  //var name: String { get set }
+    //var name: String { get set }
 }
 
 class SongDetailInteractor: SongDetailBusinessLogic, SongDetailDataStore {
-  var presenter: SongDetailPresentationLogic?
-  var worker: SongDetailWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: SongDetail.Something.Request) {
-    worker = SongDetailWorker()
-    worker?.doSomeWork()
+    var presenter: SongDetailPresentationLogic?
+    var worker: SongDetailWorker?
+    //var name: String = ""
     
-    let response = SongDetail.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    // MARK: Do something
+    
+    func doSomething(request: SongDetail.Something.Request) {
+        worker = SongDetailWorker()
+        worker?.doSomeWork()
+        
+        let response = SongDetail.Something.Response()
+        presenter?.presentSomething(response: response)
+    }
 }

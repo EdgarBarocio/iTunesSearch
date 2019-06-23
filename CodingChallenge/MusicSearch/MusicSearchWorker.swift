@@ -13,6 +13,6 @@
 import UIKit
 
 class MusicSearchWorker {
-  func doSomeWork() {
-  }
+    func doSomeWork() {
+    }
 }

@@ -13,16 +13,16 @@
 import UIKit
 
 protocol SongDetailPresentationLogic {
-  func presentSomething(response: SongDetail.Something.Response)
+    func presentSomething(response: SongDetail.Something.Response)
 }
 
 class SongDetailPresenter: SongDetailPresentationLogic {
-  weak var viewController: SongDetailDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: SongDetail.Something.Response) {
-    let viewModel = SongDetail.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    weak var viewController: SongDetailDisplayLogic?
+    
+    // MARK: Do something
+    
+    func presentSomething(response: SongDetail.Something.Response) {
+        let viewModel = SongDetail.Something.ViewModel()
+        viewController?.displaySomething(viewModel: viewModel)
+    }
 }

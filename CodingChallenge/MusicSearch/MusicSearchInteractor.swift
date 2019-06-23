@@ -13,25 +13,27 @@
 import UIKit
 
 protocol MusicSearchBusinessLogic {
-  func doSomething(request: MusicSearch.Something.Request)
+    func performSearch(request: MusicSearch.Search.Request)
 }
 
 protocol MusicSearchDataStore {
-  //var name: String { get set }
+    //var name: String { get set }
 }
 
 class MusicSearchInteractor: MusicSearchBusinessLogic, MusicSearchDataStore {
-  var presenter: MusicSearchPresentationLogic?
-  var worker: MusicSearchWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: MusicSearch.Something.Request) {
-    worker = MusicSearchWorker()
-    worker?.doSomeWork()
+    var presenter: MusicSearchPresentationLogic?
+    var worker: MusicSearchWorker?
     
-    let response = MusicSearch.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    // MARK: Do something
+    
+    func performSearch(request: MusicSearch.Search.Request) {
+        worker = MusicSearchWorker()
+        worker?.doSomeWork()
+        
+        let response = MusicSearch.Search.Response()
+        presenter?.presentSomething(response: response)
+    }
+    
+    
+    
 }

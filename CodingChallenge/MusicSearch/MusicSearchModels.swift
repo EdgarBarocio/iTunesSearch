@@ -13,14 +13,17 @@
 import UIKit
 
 enum MusicSearch {
-  // MARK: Use cases
-  
-  enum Something {
-    struct Request {
+    // MARK: Use cases
+    
+    enum Search {
+        struct Request {
+            var searchTerm: String
+        }
+        struct Response {
+            var searchResult: SongsResponse?
+        }
+        struct ViewModel {
+            var searchResult: SongsResponse?
+        }
     }
-    struct Response {
-    }
-    struct ViewModel {
-    }
-  }
 }
